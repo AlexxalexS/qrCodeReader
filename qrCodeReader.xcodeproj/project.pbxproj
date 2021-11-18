@@ -11,9 +11,11 @@
 		8AB188B5272B382B0041CC8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB188B4272B382B0041CC8E /* ContentView.swift */; };
 		8AB188B7272B382D0041CC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AB188B6272B382D0041CC8E /* Assets.xcassets */; };
 		8AB188BA272B382D0041CC8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AB188B9272B382D0041CC8E /* Preview Assets.xcassets */; };
+		8AB188C2272B39720041CC8E /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 8AB188C1272B39720041CC8E /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A6190B72746EBE30098EA94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8AB188AF272B382B0041CC8E /* qrCodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrCodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AB188B2272B382B0041CC8E /* qrCodeReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeReaderApp.swift; sourceTree = "<group>"; };
 		8AB188B4272B382B0041CC8E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AB188C2272B39720041CC8E /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +54,7 @@
 		8AB188B1272B382B0041CC8E /* qrCodeReader */ = {
 			isa = PBXGroup;
 			children = (
+				8A6190B72746EBE30098EA94 /* Info.plist */,
 				8AB188B2272B382B0041CC8E /* qrCodeReaderApp.swift */,
 				8AB188B4272B382B0041CC8E /* ContentView.swift */,
 				8AB188B6272B382D0041CC8E /* Assets.xcassets */,
@@ -83,6 +87,9 @@
 			dependencies = (
 			);
 			name = qrCodeReader;
+			packageProductDependencies = (
+				8AB188C1272B39720041CC8E /* CodeScanner */,
+			);
 			productName = qrCodeReader;
 			productReference = 8AB188AF272B382B0041CC8E /* qrCodeReader.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +118,9 @@
 				Base,
 			);
 			mainGroup = 8AB188A6272B382B0041CC8E;
+			packageReferences = (
+				8AB188C0272B39720041CC8E /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 8AB188B0272B382B0041CC8E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -266,15 +276,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = qrCodeReader/qrCodeReader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"qrCodeReader/Preview Content\"";
 				DEVELOPMENT_TEAM = 5FWDYC534G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = qrCodeReader/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Для сканирования QR кода";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -283,8 +297,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = alex.qrCodeReader;
+				PRODUCT_BUNDLE_IDENTIFIER = alexS.qrCodeReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -296,15 +311,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = qrCodeReader/qrCodeReader.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"qrCodeReader/Preview Content\"";
 				DEVELOPMENT_TEAM = 5FWDYC534G;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = qrCodeReader/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Для сканирования QR кода";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -313,8 +332,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = alex.qrCodeReader;
+				PRODUCT_BUNDLE_IDENTIFIER = alexS.qrCodeReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -343,6 +363,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8AB188C0272B39720041CC8E /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8AB188C1272B39720041CC8E /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AB188C0272B39720041CC8E /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8AB188A7272B382B0041CC8E /* Project object */;
 }
