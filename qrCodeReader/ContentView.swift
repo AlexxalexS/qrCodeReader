@@ -44,9 +44,7 @@ struct ContentView: View {
 
     func handleScan(result: Result<String, CodeScannerView.ScanError>) {
 
-        guard let url =  URL(string:"http://localhost:3000/totp-validate") else { return }
-
-        //### This is a little bit simplified. You may need to escape `username` and `password` when they can contain some special characters...
+        guard let url =  URL(string:"http://188.68.220.226/totp-validate") else { return }
 
         print(result)
 
@@ -55,7 +53,7 @@ struct ContentView: View {
             print(code)
             startTimer()
 
-            let id = "PFTVESZBJZWTOUKIKBXWEQKOEYZV4ZKJ"
+            let id = "MR4CGXLCIFKHSMCDIEQUKSCXLBKEE3D2"
             let body = "secret=\(id))&token=\(code)"
             let finalBody = body.data(using: .utf8)
             var request = URLRequest(url: url)
