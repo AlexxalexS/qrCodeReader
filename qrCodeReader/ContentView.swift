@@ -12,24 +12,40 @@ struct Answer: Codable {
     var valid: Bool
 }
 
+enum ReadState {
+    case success
+    case invalid
+    case empty
+}
+
+enum APIEnvironment: String {
+
+    case local = "http://localhost:8080"
+    case server = "https://new-server-totp.herokuapp.com"
+
+}
+
+
 struct ContentView: View {
+
+    let apiUrl: APIEnvironment = .server
 
     @State var isCodeTrue = false
     @State var isReader = false
 
+    @State var colorBackground: ReadState = .empty
+
     var body: some View {
         VStack {
             ZStack {
-                if isReader {
-                    if isCodeTrue {
-                        Color.green
-                    } else {
-                        Color.red
-                    }
-                } else {
+                switch colorBackground {
+                case .success:
+                    Color.green
+                case .invalid:
+                    Color.red
+                case .empty:
                     Color.white
                 }
-
 
                 CodeScannerView(
                     codeTypes: [.qr],
@@ -44,17 +60,19 @@ struct ContentView: View {
 
     func handleScan(result: Result<String, CodeScannerView.ScanError>) {
 
-        guard let url =  URL(string:"http://188.68.220.226/totp-validate") else { return }
-
+        guard let url =  URL(string:"\(apiUrl.rawValue)/api/totp/validate") else { return }
         print(result)
 
         switch result {
         case .success(let code):
             print(code)
+
+            let data = code.split(separator: ".")
+            let token = data[0]
+            let userId = data[1]
             startTimer()
 
-            let id = "MR4CGXLCIFKHSMCDIEQUKSCXLBKEE3D2"
-            let body = "secret=\(id))&token=\(code)"
+            let body = "id=\(userId)&token=\(token)"
             let finalBody = body.data(using: .utf8)
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -76,51 +94,30 @@ struct ContentView: View {
                     print(decod)
 
                     if decod.valid {
-                        isCodeTrue = true
+                        colorBackground = .success
                     } else {
-                        isCodeTrue = false
+                        colorBackground = .invalid
                     }
-
                 } catch {
                     debugPrint("Parser error")
                 }
-
             }.resume()
-            
 
         case .failure(let error):
             print("Scanning failed")
             print(error)
         }
-
-
-
-
-        //        switch result {
-        //        case .success(let code):
-        //            startTimer()
-        //            if code == "Alex" {
-        //                isCodeTrue = true
-        //            } else {
-        //                isCodeTrue = false
-        //            }
-        //            print(code)
-        //        case .failure(let error):
-        //            print("Scanning failed")
-        //            print(error)
-        //        }
     }
 
     func startTimer(){
-        isReader = true
-        var seconds = 2
+        var seconds = 3
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             seconds -= 1
             print(seconds)
             if seconds == 0 {
                 timer.invalidate()
-                seconds = 2
-                isReader = false
+                seconds = 3
+                colorBackground = .empty
             }
         }
     }
