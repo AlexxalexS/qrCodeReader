@@ -1,14 +1,7 @@
-//
-//  ContentView.swift
-//  qrCodeReader
-//
-//  Created by Alexey on 28.10.2021.
-//
-
 import SwiftUI
 import CodeScanner
 
-struct ContentView: View {
+struct MainView: View {
 
     let apiUrl: APIEnvironment = .server
 
@@ -20,22 +13,25 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ZStack {
+                
                 switch readState {
                 case .success:
-                    Color.green
+                    Color.green.transition(.opacity.animation(.easeInOut(duration: 0.1)))
                 case .invalid:
-                    Color.red
+                    Color.red.transition(.opacity.animation(.easeInOut(duration: 0.1)))
                 case .invalidQr:
-                    Color.purple
+                    Color.purple.transition(.opacity.animation(.easeInOut(duration: 0.1)))
+                case .networkRequest:
+                    Color.gray.opacity(0.5).transition(.opacity.animation(.easeInOut(duration: 0.1)))
                 case .empty:
-                    Color.white
+                    Color.white.transition(.opacity.animation(.easeInOut(duration: 0.1)))
                 }
 
                 CodeScannerView(
                     codeTypes: [.qr],
                     scanMode: .continuous,
                     completion: self.handleScan
-                ).rotationEffect(.degrees(90))
+                )
                     .scaledToFit()
                     .padding(100)
 
@@ -86,6 +82,7 @@ struct ContentView: View {
     }
 
     private func networkValidationCode(userId id: String, token: String) {
+        readState = .networkRequest
         guard let url =  URL(string:"\(apiUrl.rawValue)/api/totp/validate") else { return }
 
         let body = "id=\(id)&token=\(token)"
@@ -93,8 +90,6 @@ struct ContentView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.httpBody = finalBody
-
-        startTimer()
 
         URLSession.shared.dataTask(with: request){ (data, response, error) in
             if let error = error {
@@ -112,8 +107,14 @@ struct ContentView: View {
 
                 if decod.valid {
                     readState = .success
+                    DispatchQueue.main.async {
+                        self.startTimer()
+                    }
                 } else {
                     readState = .invalid
+                    DispatchQueue.main.async {
+                        self.startTimer()
+                    }
                 }
             } catch {
                 debugPrint("Parser error")
@@ -133,11 +134,14 @@ struct ContentView: View {
             }
         }
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
+
     static var previews: some View {
-        ContentView()
+        MainView()
     }
+
 }
 

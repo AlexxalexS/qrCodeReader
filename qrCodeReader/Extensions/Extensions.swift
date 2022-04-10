@@ -1,10 +1,3 @@
-//
-//  Extensions.swift
-//  qrCodeReader
-//
-//  Created by Alexey on 13.02.2022.
-//
-
 import Foundation
 
 extension Array {

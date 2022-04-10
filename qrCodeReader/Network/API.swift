@@ -1,10 +1,3 @@
-//
-//  API.swift
-//  qrCodeReader
-//
-//  Created by Alexey on 13.02.2022.
-//
-
 import Foundation
 
 enum APIEnvironment: String {

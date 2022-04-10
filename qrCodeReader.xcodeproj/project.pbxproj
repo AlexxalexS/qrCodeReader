@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8AB188B3272B382B0041CC8E /* qrCodeReaderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB188B2272B382B0041CC8E /* qrCodeReaderApp.swift */; };
-		8AB188B5272B382B0041CC8E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB188B4272B382B0041CC8E /* ContentView.swift */; };
+		8AB188B3272B382B0041CC8E /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB188B2272B382B0041CC8E /* RootView.swift */; };
+		8AB188B5272B382B0041CC8E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB188B4272B382B0041CC8E /* MainView.swift */; };
 		8AB188B7272B382D0041CC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AB188B6272B382D0041CC8E /* Assets.xcassets */; };
 		8AB188BA272B382D0041CC8E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AB188B9272B382D0041CC8E /* Preview Assets.xcassets */; };
 		8AB188C2272B39720041CC8E /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 8AB188C1272B39720041CC8E /* CodeScanner */; };
@@ -20,8 +20,8 @@
 /* Begin PBXFileReference section */
 		8A6190B72746EBE30098EA94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8AB188AF272B382B0041CC8E /* qrCodeReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = qrCodeReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AB188B2272B382B0041CC8E /* qrCodeReaderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qrCodeReaderApp.swift; sourceTree = "<group>"; };
-		8AB188B4272B382B0041CC8E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8AB188B2272B382B0041CC8E /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		8AB188B4272B382B0041CC8E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		8AB188B6272B382D0041CC8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AB188B9272B382D0041CC8E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8AB8E73427B9690D009082DE /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -64,8 +64,8 @@
 				8AB8E73627B9692D009082DE /* Extensions */,
 				8AB8E73327B968FE009082DE /* Models */,
 				8A6190B72746EBE30098EA94 /* Info.plist */,
-				8AB188B2272B382B0041CC8E /* qrCodeReaderApp.swift */,
-				8AB188B4272B382B0041CC8E /* ContentView.swift */,
+				8AB188B2272B382B0041CC8E /* RootView.swift */,
+				8AB188B4272B382B0041CC8E /* MainView.swift */,
 				8AB188B6272B382D0041CC8E /* Assets.xcassets */,
 				8AB188B8272B382D0041CC8E /* Preview Content */,
 			);
@@ -182,8 +182,8 @@
 			files = (
 				8AB8E73827B96942009082DE /* Extensions.swift in Sources */,
 				8AB8E73527B9690D009082DE /* Models.swift in Sources */,
-				8AB188B5272B382B0041CC8E /* ContentView.swift in Sources */,
-				8AB188B3272B382B0041CC8E /* qrCodeReaderApp.swift in Sources */,
+				8AB188B5272B382B0041CC8E /* MainView.swift in Sources */,
+				8AB188B3272B382B0041CC8E /* RootView.swift in Sources */,
 				8AB8E73B27B969B2009082DE /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

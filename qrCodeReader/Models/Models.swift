@@ -1,12 +1,4 @@
-//
-//  Models.swift
-//  qrCodeReader
-//
-//  Created by Alexey on 13.02.2022.
-//
-
 import Foundation
-
 
 struct Answer: Codable {
 
@@ -19,6 +11,7 @@ enum ReadState {
     case success
     case invalid
     case invalidQr
+    case networkRequest
     case empty
     
 }
