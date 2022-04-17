@@ -4,16 +4,13 @@ import CodeScanner
 struct MainView: View {
 
     let apiUrl: APIEnvironment = .server
-
     @State var isCodeTrue = false
     @State var isReader = false
-
     @State var readState: ReadState = .empty
 
     var body: some View {
         VStack {
             ZStack {
-                
                 switch readState {
                 case .success:
                     Color.green.transition(.opacity.animation(.easeInOut(duration: 0.1)))
@@ -30,7 +27,7 @@ struct MainView: View {
                 CodeScannerView(
                     codeTypes: [.qr],
                     scanMode: .continuous,
-                    completion: self.handleScan
+                    completion: handleScan
                 )
                     .scaledToFit()
                     .padding(100)
@@ -46,7 +43,7 @@ struct MainView: View {
         }
     }
 
-    func handleScan(result: Result<String, CodeScannerView.ScanError>) {
+    private func handleScan(result: Result<String, CodeScannerView.ScanError>) {
         switch result {
         case .success(let code):
             print(code)
@@ -64,6 +61,13 @@ struct MainView: View {
 
         let splitCode = code.split(separator: ".").map{ String($0) }
 
+        guard let userToken = splitCode[safe: 0] else {
+            readState = .invalidQr
+            startTimer()
+
+            return
+        }
+
         guard let userId = splitCode[safe: 1] else {
             readState = .invalidQr
             startTimer()
@@ -71,10 +75,9 @@ struct MainView: View {
             return
         }
 
-        guard let userToken = splitCode[safe: 0] else {
+        if splitCode.count>2 {
             readState = .invalidQr
             startTimer()
-
             return
         }
 
@@ -117,6 +120,10 @@ struct MainView: View {
                     }
                 }
             } catch {
+                readState = .invalid
+                DispatchQueue.main.async {
+                    self.startTimer()
+                }
                 debugPrint("Parser error")
             }
         }.resume()
