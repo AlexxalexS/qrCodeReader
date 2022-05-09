@@ -4,6 +4,7 @@
 Прототип считывателя для СКУД систем.
 
 [Клиентское приложение для СКУД](https://github.com/AlexxalexS/SaveYourData)
+
 [Backend для СКУД](https://github.com/AlexxalexS/newServer/)
 
 ## Данное приложение адаптировано для запуска на MacBook с M1.
